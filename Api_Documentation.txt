@@ -1,0 +1,104 @@
+1. Admin login api : 
+
+Url : http://localhost:3000/api/auth/signin
+Method : POST
+Request: 
+{
+   
+    "email": "admin@poll.com",
+    "password": "password"
+   
+}
+
+Response: 
+{
+    "id": 1,
+    "firstName": "Admin",
+    "lastName": "User",
+    "email": "admin@poll.com",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkzNDI3NzU5LCJleHAiOjE1OTM1MTQxNTl9.7JZtTHE-jGRtW4dvw8EVyzzFO1L83Tny-InWFuBY2JQ"
+}
+
+
+2. Admin chart result :
+
+Url : http://localhost:3000/api/result
+Method: GET
+header : x-access-token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkzNDI3NzU5LCJleHAiOjE1OTM1MTQxNTl9.7JZtTHE-jGRtW4dvw8EVyzzFO1L83Tny-InWFuBY2JQ
+Response:
+{
+    "apiStatus": true,
+    "result": [
+        {
+            "name": "Joseph Lister",
+            "y": 1
+        },
+        {
+            "name": "Elizabeth Blackwell",
+            "y": 0
+        },
+        {
+            "name": "James Parkinston",
+            "y": 0
+        }
+    ]
+}
+
+3. Voter email check api : 
+
+Url : http://localhost:3000/api/emailcheck
+Method: POST
+Request:
+{
+   "email": "voter1@poll.com"
+}
+
+Response:
+{
+    "apiStatus": true,
+    "message": "New User! Ready to vote"
+}
+
+4. List of candidates:
+
+Url : http://localhost:3000/api/candidate
+Method: GET
+Response:
+[
+    {
+        "id": 2,
+        "firstName": "Joseph",
+        "lastName": "Lister"
+    },
+    {
+        "id": 3,
+        "firstName": "Elizabeth",
+        "lastName": "Blackwell"
+    },
+    {
+        "id": 4,
+        "firstName": "James",
+        "lastName": "Parkinston"
+    }
+]
+
+5. Vote api
+
+Url : http://localhost:3000/api/vote
+Method: POST
+Request:
+{
+   "email": "voter1@poll.com",
+   "candidate_id": 2
+}
+
+Response:
+{
+    "apiStatus": true,
+    "message": "Thanks for voted!"
+}
+
+6. Export Vote details:
+
+Url : http://localhost:3000/api/exportPdf
+Method : GET
